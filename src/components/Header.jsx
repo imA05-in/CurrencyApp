@@ -1,10 +1,11 @@
 import logo from "../assets/images/logo.svg";
-import Container from "./Container";
-
+import { Container, CurrnecyPair } from "./index";
+import useCurrencyHook from "../hooks/useCurrencyHook";
 export default function Header() {
+  const currencyRates = useCurrencyHook("usd");
   const navItems = [
     {
-      label: "55 CURRENCIES",
+      label: "All CURRENCIES",
       path: "#",
     },
     {
@@ -13,29 +14,40 @@ export default function Header() {
     },
   ];
 
+  const toCurrItems = Object.keys(currencyRates?.usd || {});
+  console.log(Object.keys(currencyRates?.usd || {}));
+
   return (
-    
     <Container>
-    <header className="w-full flex flex-col items-center">
-      <div className="flex items-center justify-between p-1 py-2 md:px-2 w-full">
-        {/*remove border*/}
-        <div className="">
-          <img src={logo} className="max-w-30" alt="FX_CHECKER" />
+      <header className="w-full flex flex-col items-center">
+        <div className="flex items-center justify-between p-1 py-2 md:px-2 w-full">
+          <div className="">
+            <img src={logo} className="max-w-30" alt="FX_CHECKER" />
+          </div>
+          <div className="flex gap-3 md:gap-15 text-[#9D9D9D] px-3">
+            {navItems.map((item) => {
+              return (
+                <li
+                  key={item.label}
+                  className="list-none text-sm md font-medium"
+                >
+                  {item.label}
+                </li>
+              );
+            })}
+          </div>
         </div>
-        <div className="flex gap-3 md:gap-15 text-neutral-500 px-3">
-          {navItems.map((item) => {
-            return (
-              <li key={item.label} className="list-none text-sm md font-medium">
-                {item.label}
-              </li>
-            );
-          })}
+        <div className="flex w-full justify-between px-1">
+          <div className="left-0 bg-[#CEF739] text-black flex items-center justify-center px-1">
+            <p className="text-sm">LIVE MARKETS</p>
+          </div>
+          <div className="flex gap-2 items-center justify-center overflow-scroll scrollbar-none w-full">
+            {toCurrItems.map((curr) => (
+              <CurrnecyPair fromCurr={`usd`} toCurr={curr} key={curr} />
+            ))}
+          </div>
         </div>
-      </div>
-      <div>
-        hi
-      </div>
-    </header>
-          </Container>
+      </header>
+    </Container>
   );
 }
