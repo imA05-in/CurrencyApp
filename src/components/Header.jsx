@@ -1,8 +1,19 @@
 import logo from "../assets/images/logo.svg";
 import { Container, CurrnecyPair } from "./index";
 import useCurrencyHook from "../hooks/useCurrencyHook";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrencyRate } from "../store/currencySlice";
+import { useEffect } from "react";
+
 export default function Header() {
   const currencyRates = useCurrencyHook("usd");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setCurrencyRate(currencyRates));
+  }, [currencyRates])
+  const currencyLiveRates = useSelector((state)=>(state?.currencyRate))
+  
+  
   const navItems = [
     {
       label: "All CURRENCIES",
@@ -14,8 +25,9 @@ export default function Header() {
     },
   ];
 
-  const toCurrItems = Object.keys(currencyRates?.usd || {});
-  console.log(Object.keys(currencyRates?.usd || {}));
+  const toCurrItems = Object.keys(currencyLiveRates?.usd || {});
+  console.log(Object.keys(currencyLiveRates?.usd || {}));
+  console.log("Header mounted");
 
   return (
     <Container>
