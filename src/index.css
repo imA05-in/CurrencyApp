@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+#root{
+    background-color: #0A0A0A;
+    color: #FFFFFF;
+    height: 100vh;
+    font-family: "jetbrains-mono";
+}
+body{
+    margin: 0%;
+}
+
+@font-face {
+    font-family:"jetbrains-mono" ;
+    src: url("./assets/fonts/jetbrains-mono/jetbrains-mono-variable.ttf");
+}
