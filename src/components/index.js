@@ -2,4 +2,10 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Container from "./Container";
 import CurrnecyPair from "./CurrencyPair";
-export {Header, Footer, Container, CurrnecyPair}
+import Converter from "./Converter";
+import ConverterWrapper from "./ConverterWrapper";
+import Compare from "./Compare"
+import Favorites from "./Favorites"
+import History from "./History"
+import Log from "./Log"
+export {Header, Footer,ConverterWrapper, Container, CurrnecyPair, Converter, Compare, Favorites, History, Log }
