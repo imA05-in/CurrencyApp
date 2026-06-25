@@ -26,7 +26,11 @@ export default function SectionBar() {
       {SectionBarItems.map((item) => {
         return (
           <NavLink
-            className={({ isActive }) => (isActive ? "border-b-2 border-b-lime-500" : "border-b-2 border-b-neutral-900")}
+            className={({ isActive }) =>
+              isActive
+                ? "border-b-2 border-b-lime-500 transition-all duration-300"
+                : "border-b-2 border-b-neutral-900"
+            }
             to={item.path}
           >
             {item.label}

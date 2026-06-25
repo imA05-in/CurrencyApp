@@ -11,7 +11,7 @@ export default function Header() {
   const currencyRates = useCurrencyHook("usd");
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setCurrencyRate(currencyRates));
+    dispatch(setCurrencyRate({currencyRate : currencyRates}));
   }, [currencyRates])
   const currencyLiveRates = useSelector((state)=>(state?.currencyRate))
   

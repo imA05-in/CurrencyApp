@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Converter({
   label,
-  amount,
+  amount = 0,
   amountColor = "text-neutral-50",
   oncurrencyChange,
   onAmountChange,
   readonly,
   curr = "usd",
 }) {
+
+  const dispatch = useDispatch()
+
   const currencies = useSelector((state) => state.currencyRate?.["usd"]);
   const [currncyOptions, setCurrncyOptions] = useState([]);
-  const [currency, setCurrency] = useState("");
 
   useEffect(() => {
     if (currencies) {
@@ -21,13 +23,13 @@ export default function Converter({
   }, [currencies]);
 
   return (
-    <div className="bg-neutral-600 rounded w-full ">
+    <div className="bg-neutral-600 rounded-2xl w-full ">
       <div className=" p-3">
         <div className="text-neutral-100">{label}</div>
         <div className="flex justify-between ">
           <input
             type="text"
-            className={`${amountColor} outline-none font-bold text-lg lg:text-xl rounded w-50 md:w-full`}
+            className={`${amountColor} outline-none font-bold text-lg lg:text-xl rounded-2xl w-50 md:w-full md:text-2xl`}
             onChange={(e) => onAmountChange(e)}
             value={amount}
             readOnly={readonly}
