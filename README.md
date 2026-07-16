@@ -1,5 +1,5 @@
 Translated from Figma
 
-![Landing page](screenshots/1.png)
-![Mobile View](screenshots/2.png)
-![Desktop View](screenshots/3.png)
+![Landing page](showcase/Images/screenshots/0.png)
+![Mobile View](showcase/Images/screenshots/1.png)
+![Desktop View](showcase/Images/screenshots/2.png)
