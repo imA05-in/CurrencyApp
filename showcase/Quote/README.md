@@ -1,0 +1,1 @@
+Fail often so you can succeed sooner - Tom Kelley
